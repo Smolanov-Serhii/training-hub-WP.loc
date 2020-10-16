@@ -131,6 +131,7 @@ get_header();
                             <a href="<? the_permalink();?>" class="acardeon__lnk">
                                 Подробнее...
                             </a>
+                            <?php echo get_the_post_thumbnail();?>
                         </li>
                     <?php }
                 }
@@ -190,6 +191,64 @@ get_header();
         </div>
     </section>
     <section class="events">
+        <div class="events__container">
+            <div class="events__select">
+                <ul class="events__select-list">
+                    <?php
+                    $counter = 0;
+                    $class = '';
+                    $args = array(
+                        'post_type' => 'trenings',
+                        'showposts' => "", //сколько показать статей
+                        'orderby' => "", //сортировка по дате
+                        'caller_get_posts' => 1);
+                    $my_query = new wp_query($args);
+                    if ($my_query->have_posts()) {
+                        while ($my_query->have_posts()) {
+                            $counter++;
+                            $my_query->the_post();
+                            $alt = $image['alt'] ?>
+                            <li class="events__select-item">
+                                <div class="item-title">
+                                    <?php the_title();?>
+                                </div>
+                                <div class="item-date">
+                                    <?php the_field('data_dlya_slajdera_sobytij');?>
+                                </div>
+                            </li>
+                        <?php }
+                    }
+                    wp_reset_query(); ?>
+                </ul>
+            </div>
+            <ul class="events__slide">
+                <?php
+                $counter = 0;
+                $class = '';
+                $args = array(
+                    'post_type' => 'trenings',
+                    'showposts' => "", //сколько показать статей
+                    'orderby' => "", //сортировка по дате
+                    'caller_get_posts' => 1);
+                $my_query = new wp_query($args);
+                if ($my_query->have_posts()) {
+                    while ($my_query->have_posts()) {
+                        $counter++;
+                        $my_query->the_post();
+                        $alt = $image['alt'] ?>
+                        <li class="events__slide-item" style="background-image: url('<?php echo the_field('kartinka_dlya_verhva_straniczy_treninga')?>')" ">
+                        <div class="slide-fader"></div>
+                            <?php
+                            $meta_value = the_field('5dney');
+                            if (!empty( $meta_value )){
+                                the_field('5dney');
+                            }?>
+                        </li>
+                    <?php }
+                }
+                wp_reset_query(); ?>
+            </ul>
+        </div>
 
     </section>
     <section class="text-only container">

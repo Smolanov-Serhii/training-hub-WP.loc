@@ -136,6 +136,38 @@
                 scrollTracking();
             });
         }
+        if ($('.events').length){
+            $('.events__slide').slick({
+                dots: false,
+                infinite: false,
+                speed: 300,
+                arrows: false,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                centerMode: true,
+                draggable: true,
+                fade: true
+            });
+            $('.events__select-list').slick({
+                dots: false,
+                infinite: false,
+                speed: 300,
+                arrows: false,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                draggable: false,
+                fade: false,
+                touchMove: false,
+                swipe: false,
+            });
+            $('.events__select-list .slick-slide').on('click', function(){
+                $('.events__select-list .slick-slide').removeClass('slick-current');
+                $(this).addClass('slick-current');
+                var sliderIndex = $(this).index();
+                console.log(sliderIndex);
+                $('.events__slide').slick('slickGoTo', sliderIndex);
+            });
+        }
     });
 
 
