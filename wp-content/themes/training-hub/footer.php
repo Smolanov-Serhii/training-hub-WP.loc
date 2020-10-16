@@ -13,16 +13,28 @@
 <footer class="footer">
     <div class="footer__main container">
         <div class="footer__part">
-            <nav class="footer-nav">
-                <ul class="footer-nav__list container">
-                    <li class="footer-nav__item"><a href="">Главная</a></li>
-                    <li class="footer-nav__item"><a href="">Тренинги</a></li>
-                    <li class="footer-nav__item"><a href="">Школа Бизнес тренеров</a></li>
-                    <li class="footer-nav__item"><a href="">Тренера</a></li>
-                    <li class="footer-nav__item"><a href="">Корпоративное обучение</a></li>
-                    <li class="footer-nav__item"><a href="">Новости</a></li>
-                </ul>
-            </nav>
+            <?php
+            wp_nav_menu(
+                array(
+                    'theme_location' => 'main-menu',
+                    'menu_id'        => 'main-menu',
+                    'menu'            => '',              // (string) Название выводимого меню (указывается в админке при создании меню, приоритетнее
+                    // чем указанное местоположение theme_location - если указано, то параметр theme_location игнорируется)
+                    'container'       => 'nav',           // (string) Контейнер меню. Обворачиватель ul. Указывается тег контейнера (по умолчанию в тег div)
+                    'container_class' => 'footer-nav',              // (string) class контейнера (div тега)
+                    'container_id'    => '',              // (string) id контейнера (div тега)
+                    'menu_class'      => 'footer-nav__list container',          // (string) class самого меню (ul тега)
+                    'echo'            => true,            // (boolean) Выводить на экран или возвращать для обработки
+                    'fallback_cb'     => 'wp_page_menu',  // (string) Используемая (резервная) функция, если меню не существует (не удалось получить)
+                    'before'          => '',              // (string) Текст перед <a> каждой ссылки
+                    'after'           => '',              // (string) Текст после </a> каждой ссылки
+                    'link_before'     => '',              // (string) Текст перед анкором (текстом) ссылки
+                    'link_after'      => '',              // (string) Текст после анкора (текста) ссылки
+                    'depth'           => 0,               // (integer) Глубина вложенности (0 - неограничена, 2 - двухуровневое меню)
+                    'walker'          => '',              // (object) Класс собирающий меню. Default: new Walker_Nav_Menu
+                )
+            );
+            ?>
         </div>
         <div class="footer__part">
 
@@ -62,11 +74,10 @@
     </div>
     <div class="footer__copyright">
         <div class="footer__copyright-content container">
-            Copyright 2020
+            Copyright <?php echo date('Y'); ?> ©
         </div>
     </div>
 </footer>
-<script src="dist/js/common.js"></script>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

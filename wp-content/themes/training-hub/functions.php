@@ -7,10 +7,90 @@
  * @package Training-Hub
  */
 
+add_action('init', 'create_post_types' );
 
+add_theme_support( 'post-thumbnails' );
 
 add_action( 'init', 'register_post_types' );
 function register_post_types(){
+
+    register_post_type( 'fullcicle', [
+        'label'  => null,
+        'labels' => [
+            'name'               => 'Полный цикл', // основное название для типа записи
+            'singular_name'      => 'fullcicle', // название для одной записи этого типа
+            'add_new'            => 'Добавить описание', // для добавления новой записи
+            'add_new_item'       => 'Добавление описания', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item'          => 'Редактирование описания', // для редактирования типа записи
+            'new_item'           => 'Новый цикл', // текст новой записи
+            'view_item'          => 'Смотреть цикл', // для просмотра записи этого типа.
+            'search_items'       => 'Искать цикл', // для поиска по этим типам записи
+            'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+            'parent_item_colon'  => '', // для родителей (у древовидных типов)
+            'menu_name'          => 'Полный цикл', // название меню
+        ],
+        'description'         => '',
+        'public'              => true,
+        // 'publicly_queryable'  => null, // зависит от public
+        // 'exclude_from_search' => null, // зависит от public
+        // 'show_ui'             => null, // зависит от public
+        // 'show_in_nav_menus'   => null, // зависит от public
+        'show_in_menu'        => null, // показывать ли в меню адмнки
+        // 'show_in_admin_bar'   => null, // зависит от show_in_menu
+        'show_in_rest'        => null, // добавить в REST API. C WP 4.7
+        'rest_base'           => null, // $post_type. C WP 4.7
+        'menu_position'       => null,
+        'menu_icon'           => null,
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical'        => false,
+        'supports'            => [ 'title', 'editor','thumbnail', 'page-attributes','post-formats'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies'          => [],
+        'has_archive'         => true,
+        'rewrite'             => true,
+        'query_var'           => true,
+    ] );
+
+    register_post_type( 'top-slider', [
+        'label'  => null,
+        'labels' => [
+            'name'               => 'Главный слайдер', // основное название для типа записи
+            'singular_name'      => 'top-slider', // название для одной записи этого типа
+            'add_new'            => 'Добавить слайд', // для добавления новой записи
+            'add_new_item'       => 'Добавление слайда', // заголовка у вновь создаваемой записи в админ-панели.
+            'edit_item'          => 'Редактирование слайда', // для редактирования типа записи
+            'new_item'           => 'Новый слайд', // текст новой записи
+            'view_item'          => 'Смотреть слайд', // для просмотра записи этого типа.
+            'search_items'       => 'Искать слайд', // для поиска по этим типам записи
+            'not_found'          => 'Не найдено', // если в результате поиска ничего не было найдено
+            'not_found_in_trash' => 'Не найдено в корзине', // если не было найдено в корзине
+            'parent_item_colon'  => '', // для родителей (у древовидных типов)
+            'menu_name'          => 'Главный слайдер', // название меню
+        ],
+        'description'         => '',
+        'public'              => true,
+        // 'publicly_queryable'  => null, // зависит от public
+        // 'exclude_from_search' => null, // зависит от public
+        // 'show_ui'             => null, // зависит от public
+        // 'show_in_nav_menus'   => null, // зависит от public
+        'show_in_menu'        => null, // показывать ли в меню адмнки
+        // 'show_in_admin_bar'   => null, // зависит от show_in_menu
+        'show_in_rest'        => null, // добавить в REST API. C WP 4.7
+        'rest_base'           => null, // $post_type. C WP 4.7
+        'menu_position'       => null,
+        'menu_icon'           => null,
+        //'capability_type'   => 'post',
+        //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
+        //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
+        'hierarchical'        => false,
+        'supports'            => [ 'title', 'editor','thumbnail', 'page-attributes','post-formats'], // 'title','editor','author','thumbnail','excerpt','trackbacks','custom-fields','comments','revisions','page-attributes','post-formats'
+        'taxonomies'          => [],
+        'has_archive'         => true,
+        'rewrite'             => true,
+        'query_var'           => true,
+    ] );
 
     register_post_type( 'startevent', [
         'label'  => null,
@@ -226,9 +306,12 @@ add_action( 'widgets_init', 'training_hub_widgets_init' );
 
 
 function training_hub_scripts() {
-	wp_enqueue_style( 'training-hub-style', get_template_directory_uri() . '/dist/css/style.css', array(), _S_VERSION );
     wp_enqueue_style( 'training-hub-norm', get_template_directory_uri() . '/src/scss/normalize.css', array(), _S_VERSION );
+	wp_enqueue_style( 'training-hub-style', get_template_directory_uri() . '/dist/css/style.css', array(), _S_VERSION );
+	wp_enqueue_style( 'training-hub-fresco', get_template_directory_uri() . '/dist/css/fresco.css', array(), _S_VERSION );
+
 	wp_style_add_data( 'training-hub-style', 'rtl', 'replace' );
+    wp_enqueue_script('fresco', get_template_directory_uri() . '/dist/js/fresco.min.js');
     wp_enqueue_script('newscript', get_template_directory_uri() . '/dist/js/common.js');
 	wp_enqueue_script( 'training-hub-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
 

@@ -22,52 +22,36 @@ get_header();
 
     <section class="header-slider">
         <ul class="header-slider__list">
-            <li class="header-slider__item" style="background-image: url(src/img/header-slide-1.jpg)">
-                <div class="header-slider__title container">
-                    Цели и миссии
-                </div>
-                <div class="header-slider__desc container">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged.
-                </div>
-                <a class="header-slider__more">
-                    Подробнее ...
-                </a>
-            </li>
-            <li class="header-slider__item" style="background-image: url(src/img/header-slide-1.jpg)">
-                <div class="header-slider__title container">
-                    Цели и миссии
-                </div>
-                <div class="header-slider__desc container">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged.
-                </div>
-                <a class="header-slider__more">
-                    Подробнее ...
-                </a>
-            </li>
-            <li class="header-slider__item" style="background-image: url(src/img/header-slide-1.jpg)">
-                <div class="header-slider__title container">
-                    Цели и миссии
-                </div>
-                <div class="header-slider__desc container">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged.
-                </div>
-                <a class="header-slider__more">
-                    Подробнее ...
+            <?php
+            $args = array(
+                'post_type' => 'top-slider',
+                'showposts' => "", //сколько показать статей
+                'orderby' => "data", //сортировка по дате
+                'caller_get_posts' => 1);
+            $my_query = new wp_query($args);
+            if ($my_query->have_posts()) {
+                while ($my_query->have_posts()) {
+                    $my_query->the_post();
+                    ?>
+                    <?php
+                    $thumb_id = get_post_thumbnail_id();
+                    $thumb_url = wp_get_attachment_image_src($thumb_id,'thumbnail-size', true);
 
-                </a>
-            </li>
+                    ?>
+                    <li class="header-slider__item" style="background-image: url('<?php echo $thumb_url[0];?>')">
+                        <div class="header-slider__title container">
+                            <?php the_title();?>
+                        </div>
+                        <div class="header-slider__desc container">
+                            <?php the_content();?>
+                        </div>
+                        <a href="<?php the_permalink();?>" class="header-slider__more">
+                            Подробнее ...
+                        </a>
+                    </li>
+                <?php }
+            }
+            wp_reset_query(); ?>
         </ul>
     </section>
     <section class="start-date container">
@@ -130,6 +114,11 @@ get_header();
                         $my_query->the_post();
                         $alt = $image['alt'] ?>
                         <li class="acardeon__item <?php if ( $counter == 1 ) echo 'active';?>">
+                            <?php
+                            $meta_value = the_field('5dney');
+                            if (!empty( $meta_value )){
+                                the_field('5dney');
+                            }?>
                             <div class="acardeon__title-closed">
                                 <?php the_title(); ?>
                             </div>
@@ -150,28 +139,40 @@ get_header();
     </section>
     <div class="container-grey">
         <section class="fullcycle container">
-            <div class="fullcycle__title">
-                ПОЛНЫЙ ЦИКЛ
-            </div>
-            <div class="fullcycle__content">
-                <div class="fullcycle__image">
-                    <img class="fullcycle__img-item" src="src/img/fuulcycle.jpg">
-                </div>
-                <div class="fullcycle__desc">
-                    Мы проводим полный сопровождающий цикл обучения наших участников. После любого обучения
-                    участник не остаётся один на один с полученными знаниями. Пост тренинговое сопровождение
-                    представляет собой ряд заданий закрепляющих материал, коректировку после выполнения
-                    и предоставления обратной связи. Мы всегда с Вами на связи.
-                </div>
-            </div>
-<!--            <div class="fullcycle__buttons">-->
-<!--                <a class="fullcycle__more">-->
-<!--                    Узнать больше-->
-<!--                </a>-->
-<!--                <a class="fullcycle__resume">-->
-<!--                    РЕЗЮМЕ-->
-<!--                </a>-->
-<!--            </div>-->
+            <?php
+            $counter = 0;
+            $class = '';
+            $args = array(
+                'post_type' => 'fullcicle',
+//                        'category__in' => 3, //из какой категории вывести (удалите эту строку, если хотите, чтобы показовало последние материалы из всех рубрик сразу)
+                'showposts' => "", //сколько показать статей
+                'orderby' => "", //сортировка по дате
+                'caller_get_posts' => 1);
+            $my_query = new wp_query($args);
+            if ($my_query->have_posts()) {
+                while ($my_query->have_posts()) {
+                    $counter++;
+                    $my_query->the_post();
+                    $alt = $image['alt'] ?>
+                    <div class="fullcycle__title">
+                        <?php the_title();?>
+                    </div>
+                    <div class="fullcycle__content">
+                        <div class="fullcycle__image">
+                            <?php
+                            $thumb_id = get_post_thumbnail_id();
+                            $thumb_url = wp_get_attachment_image_src($thumb_id,'thumbnail-size', true);
+
+                            ?>
+                            <img class="fullcycle__img-item" src="<?php echo $thumb_url[0];?>" alt="<?php the_title(); ?>">
+                        </div>
+                        <div class="fullcycle__desc">
+                            <?php the_content();?>
+                        </div>
+                    </div>
+                <?php }
+            }
+            wp_reset_query(); ?>
         </section>
     </div>
     <section class="counter container">
@@ -200,129 +201,54 @@ get_header();
 
     </section>
     <section class="main-video container">
-        <img class="main-video__cover" src="src/img/video-cover.jpg" alt="">
-        <video class="main-video__video" src=""></video>
-        <div class="main-video__play-btn">
-            <svg width="166" height="166" viewBox="0 0 166 166" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0)">
-                    <path d="M88.2968 165.684C84.5989 165.684 80.9912 165.684 77.2933 165.684C75.3091 165.413 73.3249 165.233 71.4308 164.962C55.106 162.617 40.585 156.033 28.2286 145.12C13.2567 131.861 4.05706 115.266 0.90032 95.4237C0.53955 93.0787 0.268973 90.7337 -0.0917969 88.3887C-0.0917969 84.6908 -0.0917969 81.0831 -0.0917969 77.3852C0.178781 75.401 0.359166 73.4167 0.629743 71.5227C4.05706 49.6059 14.2488 31.6576 31.5658 17.9483C49.965 3.42735 70.9799 -2.25477 94.1593 0.811772C116.076 3.78812 134.024 14.1603 147.734 31.4772C162.345 49.8765 167.937 70.8913 164.96 94.161C162.796 110.576 156.122 125.007 145.208 137.363C131.95 152.425 115.355 161.535 95.422 164.692C92.9868 165.052 90.6418 165.323 88.2968 165.684ZM144.036 82.8869C144.036 49.2451 116.527 21.6462 82.8853 21.6462C49.2435 21.6462 21.7348 49.0648 21.6446 82.7066C21.5544 116.348 49.0631 143.947 82.7049 144.037C116.347 144.128 143.946 116.529 144.036 82.8869Z" fill="white"/>
-                    <path d="M120.317 82.887C101.016 96.1453 82.0753 109.223 62.8643 122.391C62.8643 95.9649 62.8643 69.8091 62.8643 43.2925C81.9851 56.4606 101.016 69.6287 120.317 82.887Z" fill="white"/>
-                </g>
-                <defs>
-                    <clipPath id="clip0">
-                        <rect width="165.684" height="165.684" fill="white"/>
-                    </clipPath>
-                </defs>
-            </svg>
-        </div>
+        <a href="<?php echo (get_post_meta($post->ID, 'ssylka_na_video_s_yutuba', true)); ?>" class="fresco main-video__fresco">
+            <img class="main-video__cover" src="<?php the_field('vyberite_oblozhku_video', $postID); ?>" alt="">
+            <div class="main-video__play-btn">
+                <svg width="166" height="166" viewBox="0 0 166 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0)">
+                        <path d="M88.2968 165.684C84.5989 165.684 80.9912 165.684 77.2933 165.684C75.3091 165.413 73.3249 165.233 71.4308 164.962C55.106 162.617 40.585 156.033 28.2286 145.12C13.2567 131.861 4.05706 115.266 0.90032 95.4237C0.53955 93.0787 0.268973 90.7337 -0.0917969 88.3887C-0.0917969 84.6908 -0.0917969 81.0831 -0.0917969 77.3852C0.178781 75.401 0.359166 73.4167 0.629743 71.5227C4.05706 49.6059 14.2488 31.6576 31.5658 17.9483C49.965 3.42735 70.9799 -2.25477 94.1593 0.811772C116.076 3.78812 134.024 14.1603 147.734 31.4772C162.345 49.8765 167.937 70.8913 164.96 94.161C162.796 110.576 156.122 125.007 145.208 137.363C131.95 152.425 115.355 161.535 95.422 164.692C92.9868 165.052 90.6418 165.323 88.2968 165.684ZM144.036 82.8869C144.036 49.2451 116.527 21.6462 82.8853 21.6462C49.2435 21.6462 21.7348 49.0648 21.6446 82.7066C21.5544 116.348 49.0631 143.947 82.7049 144.037C116.347 144.128 143.946 116.529 144.036 82.8869Z" fill="white"/>
+                        <path d="M120.317 82.887C101.016 96.1453 82.0753 109.223 62.8643 122.391C62.8643 95.9649 62.8643 69.8091 62.8643 43.2925C81.9851 56.4606 101.016 69.6287 120.317 82.887Z" fill="white"/>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0">
+                            <rect width="165.684" height="165.684" fill="white"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </div>
+        </a>
+
     </section>
     <section class="events-galery container">
         <div class="events-galery__title">
-            ГАЛЕРЕЯ СОБЫТИЙ
+            <?php echo get_cat_name(3);?>
         </div>
         <ul class="events-galery__list">
-            <li class="events-galery__item">
-                <a href="events-galery__lnk">
-                    <img class="events-galery__img" src="src/img/ev1.jpg">
-                    <div class="events-galery__date">
-                        13 сентабря
-                    </div>
-                    <div class="events-galery__item-title">
-                        ЛЕКЦИЯ ПРО ЧТОТО
-                    </div>
-                    <div class="events-galery__item-desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into
-                    </div>
-                </a>
-            </li>
-            <li class="events-galery__item">
-                <a href="events-galery__lnk">
-                    <img class="events-galery__img" src="src/img/ev2.jpg">
-                    <div class="events-galery__date">
-                        13 сентабря
-                    </div>
-                    <div class="events-galery__item-title">
-                        ЛЕКЦИЯ ПРО ЧТОТО
-                    </div>
-                    <div class="events-galery__item-desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into
-                    </div>
-                </a>
-            </li>
-            <li class="events-galery__item">
-                <a href="events-galery__lnk">
-                    <img class="events-galery__img" src="src/img/ev3.jpg">
-                    <div class="events-galery__date">
-                        13 сентабря
-                    </div>
-                    <div class="events-galery__item-title">
-                        ЛЕКЦИЯ ПРО ЧТОТО
-                    </div>
-                    <div class="events-galery__item-desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into
-                    </div>
-                </a>
-            </li>
-            <li class="events-galery__item">
-                <a href="events-galery__lnk">
-                    <img class="events-galery__img" src="src/img/ev1.jpg">
-                    <div class="events-galery__date">
-                        13 сентабря
-                    </div>
-                    <div class="events-galery__item-title">
-                        ЛЕКЦИЯ ПРО ЧТОТО
-                    </div>
-                    <div class="events-galery__item-desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into
-                    </div>
-                </a>
-            </li>
-            <li class="events-galery__item">
-                <a href="events-galery__lnk">
-                    <img class="events-galery__img" src="src/img/ev2.jpg">
-                    <div class="events-galery__date">
-                        13 сентабря
-                    </div>
-                    <div class="events-galery__item-title">
-                        ЛЕКЦИЯ ПРО ЧТОТО
-                    </div>
-                    <div class="events-galery__item-desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into
-                    </div>
-                </a>
-            </li>
-            <li class="events-galery__item">
-                <a href="events-galery__lnk">
-                    <img class="events-galery__img" src="src/img/ev3.jpg">
-                    <div class="events-galery__date">
-                        13 сентабря
-                    </div>
-                    <div class="events-galery__item-title">
-                        ЛЕКЦИЯ ПРО ЧТОТО
-                    </div>
-                    <div class="events-galery__item-desc">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                        when an unknown printer took a galley of type and scrambled it to make a type
-                        specimen book. It has survived not only five centuries, but also the leap into
-                    </div>
-                </a>
-            </li>
+            <?php
+            global $post;
+            $postslist = get_posts( array( 'posts_per_page' => 10, 'category'=>'galereya-sobytij' ) );
+            foreach ( $postslist as $post ){
+                setup_postdata($post);
+                ?>
+                <div>
+                    <li class="events-galery__item">
+                        <a href="events-galery__lnk">
+                            <?php the_post_thumbnail(); ?>
+                            <div class="events-galery__date">
+                                <?php the_date(); ?>
+                            </div>
+                            <div class="events-galery__item-title">
+                                <?php the_title(); ?>
+                            </div>
+                            <div class="events-galery__item-desc">
+                                <?php the_excerpt(); ?>
+                            </div>
+                        </a>
+                    </li>
+                </div>
+                <?php
+            }
+            wp_reset_postdata();  ?>
         </ul>
         <div class="events-galery__nav">
             <div class="events-galery__prev">

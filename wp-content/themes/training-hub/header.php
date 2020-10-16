@@ -26,6 +26,23 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+<section class="modal-contact" style="display: none">
+    <div class="modal-contact__fade">
+
+    </div>
+    <div class="modal-contact__keeper">
+        <div class="modal-contact__keeper-wrapper">
+            <?php echo do_shortcode('[contact-form-7 id="76" title="Оставить заявку"]'); ?>
+            <svg class="modal-contact__close" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.24 7.93018L14.9362 13.2327L9.63371 7.93018L7.86621 9.69768L13.1687 15.0002L7.86621 20.3027L9.63371 22.0702L14.9362 16.7677L20.24 22.0702L22.0075 20.3027L16.705 15.0002L22.0075 9.69768L20.24 7.93018Z" fill="#23C4D2"/>
+            </svg>
+        </div>
+    </div>
+
+
+</section>
+
 <?php wp_body_open(); ?>
 <div id="page" class="site">
     <header>
