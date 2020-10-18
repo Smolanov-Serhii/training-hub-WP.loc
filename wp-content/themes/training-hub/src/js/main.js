@@ -1,4 +1,33 @@
     jQuery(document).ready(function($) {
+        if ($('.recall__item').length){
+            $('.recall__item').click(function () {
+                $(this).clone(true)               // сделаем копию элемента hello
+                    .appendTo(".modal-recall__content");
+                $('.modal-recall').fadeIn(300);
+            });
+            $('.modal-recall__close').click(function () {
+                $('.modal-recall').fadeOut(300);
+                setTimeout(function () {
+                    $('.modal-recall__wrapper .recall__item').remove();
+                }, 300)
+            });
+
+            jQuery(function($){
+                $(document).mouseup(function (e){ // событие клика по веб-документу
+                    var div = $("#popup"); // тут указываем ID элемента
+                    if (!div.is(e.target) // если клик был не по нашему блоку
+                        && div.has(e.target).length === 0) { // и не по его дочерним элементам
+                        if ($('.modal-recall__wrapper .recall__item').length){
+                            $('.modal-recall').fadeOut(300);
+                            setTimeout(function () {
+                                $('.modal-recall__wrapper .recall__item').remove();
+                            }, 300)
+                        }
+                    }
+                });
+            });
+
+        }
         if ($('.acardeon__item').length){
             $('.acardeon__item').click(function () {
                 $('.acardeon__item').removeClass('active');
@@ -34,10 +63,9 @@
                 swipe: true,
                 autoplay: true,
                 autoplaySpeed: 4000,
-                adaptiveHeight: true
+                adaptiveHeight: false
             });
         }
-
 
 
         if ($('.events-galery__list').length){
@@ -145,7 +173,7 @@
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 centerMode: true,
-                draggable: true,
+                draggable: false,
                 fade: true
             });
             $('.events__select-list').slick({

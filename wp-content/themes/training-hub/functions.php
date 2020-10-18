@@ -7,6 +7,8 @@
  * @package Training-Hub
  */
 
+
+
 add_action('init', 'create_post_types' );
 
 add_theme_support( 'post-thumbnails' );
