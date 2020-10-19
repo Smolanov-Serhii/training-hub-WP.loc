@@ -39,8 +39,33 @@ header{
     }
 
     &__item, .menu-item{
+      position: relative;
+      .sub-menu{
+        min-width: 250px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: auto;
+        height: auto;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        transition-delay: 0s;
+        background-color: #F4902F;
+        li{
+          margin-left: 0!important;
+          transition: 0.3s;
+          &:hover{
+            background-color: rgba(0, 0, 0, 0.5);
+          }
+        }
+      }
       &:hover{
         background-color: #F4902F;
+        .sub-menu{
+          opacity: 1;
+          pointer-events: all;
+        }
       }
       a{
         font-family: 'Roboto', sans-serif;
@@ -1359,6 +1384,11 @@ header{
         height: 80px;
         background-color: white;
         box-shadow: 0 0 9px 0 rgba(0,0,0,.51);
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover{
+          background-color: #C4C4C4;
+        }
       }
     }
     width: 100%;
@@ -1394,12 +1424,20 @@ header{
   }
   &__item{
     background-color: white;
-    padding: 15px;
+    padding: 30px;
     box-sizing: border-box;
     height: 100%;
+    h3{
+      font-size: 40px;
+      -webkit-text-stroke: 1px #f4902f;
+    }
     p, li{
       font-size: 14px!important;
       line-height: 24px!important;
+      display: block!important;
+    }
+    strong{
+      font-weight: bold;
     }
   }
   &__list{
