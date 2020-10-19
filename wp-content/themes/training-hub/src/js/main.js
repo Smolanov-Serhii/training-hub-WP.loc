@@ -43,7 +43,7 @@
             });
         }
         if ($('.contact-section__btn').length){
-            $('.contact-section__btn').click(function () {
+            $('.contact-section__btn, .get-contact-form').click(function () {
                 $('.modal-contact').fadeIn(300);
             });
         }
@@ -194,6 +194,71 @@
                 var sliderIndex = $(this).index();
                 console.log(sliderIndex);
                 $('.events__slide').slick('slickGoTo', sliderIndex);
+            });
+        }
+        if ($('.traning-days').length){
+            $('.traning-days__slide').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                arrows: true,
+                infinite: false,
+                variableWidth: true,
+                dots: false,
+                prevArrow: $('.traning-days__nav-prew'),
+                nextArrow: $('.traning-days__nav-next'),
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 3
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            arrows: false,
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+            // $('.traning-days__slide').slick({
+            //     slidesToShow: 3,
+            //     slidesToScroll: 1,
+            //     arrows: false,
+            //     centerMode: true,
+            //     fade: true,
+            //     // asNavFor: '.traning-days__list'
+            // });
+            // $('.traning-days__list').slick({
+            //     slidesToShow: 5,
+            //     slidesToScroll: 1,
+            //     asNavFor: '.traning-days__slide',
+            //     dots: false,
+            //     centerMode: false,
+            // });
+            // $('.traning-days__list .slick-slide').on('click', function(){
+            //     $('.traning-days__list .slick-slide').removeClass('slick-current');
+            //     $(this).addClass('slick-current');
+            //     var sliderIndex = $(this).index();
+            //     console.log(sliderIndex);
+            //     $('.traning-days__slide').slick('slickGoTo', sliderIndex);
+            // });
+        }
+        if ($('.sertificate-people__list').length){
+            $('.sertificate-people__list').slick({
+                centerMode: false,
+                slidesToShow: 1,
+                arrows: false,
+                infinite: true,
+                fade: true,
+                dots: true
             });
         }
     });

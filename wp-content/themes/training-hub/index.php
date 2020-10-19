@@ -121,7 +121,7 @@ get_header();
                         $counter++;
                         $my_query->the_post();
                         $alt = $image['alt'] ?>
-                        <li class="acardeon__item <?php if ( $counter == 1 ) echo 'active';?>">
+                        <li class="acardeon__item <?php if ( $counter == 1 ) echo 'active';?>" style="background-color: <?php the_field('czvet_bloka_akardeona')?>;">
                             <div class="acardeon__title-closed">
                                 <?php the_title(); ?>
                             </div>
@@ -131,7 +131,7 @@ get_header();
                             <div class="acardeon__desc">
                                 <?php the_excerpt(); ?>
                             </div>
-                            <a href="<? the_permalink();?>" class="acardeon__lnk">
+                            <a href="<? the_permalink();?>" class="acardeon__lnk" style="color: <?php the_field('czvet_teksta_na_knopke_podrobnee')?>;background-color: <?php the_field('czvet_knopki_na_podrobnee')?>">
                                 Подробнее...
                             </a>
                             <?php echo get_the_post_thumbnail();?>
@@ -356,18 +356,18 @@ get_header();
                 ?>
                 <div>
                     <li class="events-galery__item">
-                        <a href="events-galery__lnk">
+                        <div class="events-galery__lnk">
                             <?php the_post_thumbnail(); ?>
-                            <div class="events-galery__date">
-                                <?php the_date(); ?>
-                            </div>
-                            <div class="events-galery__item-title">
-                                <?php the_title(); ?>
-                            </div>
-                            <div class="events-galery__item-desc">
-                                <?php the_excerpt(); ?>
-                            </div>
-                        </a>
+<!--                            <div class="events-galery__date">-->
+<!--                                --><?php //the_date(); ?>
+<!--                            </div>-->
+<!--                            <div class="events-galery__item-title">-->
+<!--                                --><?php //the_title(); ?>
+<!--                            </div>-->
+<!--                            <div class="events-galery__item-desc">-->
+<!--                                --><?php //the_excerpt(); ?>
+<!--                            </div>-->
+                        </div>
                     </li>
                 </div>
                 <?php

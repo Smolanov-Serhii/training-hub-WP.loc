@@ -43,7 +43,7 @@ function register_post_types(){
         'show_in_rest'        => null, // добавить в REST API. C WP 4.7
         'rest_base'           => null, // $post_type. C WP 4.7
         'menu_position'       => null,
-        'menu_icon'           => null,
+        'menu_icon'           => 'dashicons-money',
         //'capability_type'   => 'post',
         //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
         //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
@@ -82,7 +82,7 @@ function register_post_types(){
         'show_in_rest'        => null, // добавить в REST API. C WP 4.7
         'rest_base'           => null, // $post_type. C WP 4.7
         'menu_position'       => null,
-        'menu_icon'           => null,
+        'menu_icon'           => 'dashicons-slides',
         //'capability_type'   => 'post',
         //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
         //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
@@ -121,7 +121,7 @@ function register_post_types(){
         'show_in_rest'        => null, // добавить в REST API. C WP 4.7
         'rest_base'           => null, // $post_type. C WP 4.7
         'menu_position'       => null,
-        'menu_icon'           => null,
+        'menu_icon'           => 'dashicons-randomize',
         //'capability_type'   => 'post',
         //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
         //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
@@ -160,7 +160,7 @@ function register_post_types(){
         'show_in_rest'        => null, // добавить в REST API. C WP 4.7
         'rest_base'           => null, // $post_type. C WP 4.7
         'menu_position'       => null,
-        'menu_icon'           => null,
+        'menu_icon'           => 'dashicons-open-folder',
         //'capability_type'   => 'post',
         //'capabilities'      => 'post', // массив дополнительных прав для этого типа записи
         //'map_meta_cap'      => null, // Ставим true чтобы включить дефолтный обработчик специальных прав
