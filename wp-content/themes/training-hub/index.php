@@ -350,23 +350,14 @@ get_header();
         <ul class="events-galery__list">
             <?php
             global $post;
-            $postslist = get_posts( array( 'posts_per_page' => 10, 'category'=>'galereya-sobytij' ) );
+            $postslist = get_posts( array( 'posts_per_page' => -1, 'category'=>'galereya-sobytij' ) );
             foreach ( $postslist as $post ){
                 setup_postdata($post);
                 ?>
                 <div>
                     <li class="events-galery__item">
                         <div class="events-galery__lnk">
-                            <?php the_post_thumbnail(); ?>
-<!--                            <div class="events-galery__date">-->
-<!--                                --><?php //the_date(); ?>
-<!--                            </div>-->
-<!--                            <div class="events-galery__item-title">-->
-<!--                                --><?php //the_title(); ?>
-<!--                            </div>-->
-<!--                            <div class="events-galery__item-desc">-->
-<!--                                --><?php //the_excerpt(); ?>
-<!--                            </div>-->
+                            <img data-lazy="<?php echo the_post_thumbnail(); ?>"
                         </div>
                     </li>
                 </div>
@@ -391,9 +382,6 @@ get_header();
         <div class="container">
             <div class="recall__title">
                 ОТЗЫВЫ  О НАШЕЙ РАБОТЕ
-            </div>
-            <div class="recall__subtitle">
-                It is very easy to start smoking but it is an uphill task to quit it. Ask any chain smoker or even a person.
             </div>
             <ul class="recall__list">
                 <?php echo do_shortcode('[testimonial_view id="1"]'); ?>

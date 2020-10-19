@@ -12,7 +12,9 @@
   font-family: 'Poppins-Regular';
   src: url("../../src/fonts/Poppins-Regular.ttf") format("truetype");
 }
-
+*{
+  font-display: fallback;
+}
 a{
   text-decoration: none;
 }
