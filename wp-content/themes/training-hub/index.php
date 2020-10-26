@@ -357,7 +357,7 @@ get_header();
                 <div>
                     <li class="events-galery__item">
                         <div class="events-galery__lnk">
-                            <img data-lazy="<?php echo the_post_thumbnail(); ?>"
+                            <?php the_post_thumbnail(); ?>
                         </div>
                     </li>
                 </div>

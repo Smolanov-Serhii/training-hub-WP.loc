@@ -1,0 +1,10 @@
+sitemap: https://training-hub.com.ua/sitemap-misc.xml
+sitemap: https://training-hub.com.ua/sitemap-tax-category.xml
+sitemap: https://training-hub.com.ua/sitemap-pt-fullcicle-2020-10.xml
+sitemap: https://training-hub.com.ua/sitemap-pt-top-slider-2020-10.xml
+sitemap: https://training-hub.com.ua/sitemap-pt-startevent-2020-10.xml
+sitemap: https://training-hub.com.ua/sitemap-pt-trenings-2020-10.xml
+sitemap: https://training-hub.com.ua/sitemap-pt-wpm-testimonial-2020-10.xml
+sitemap: https://training-hub.com.ua/sitemap-pt-post-2020-10.xml
+sitemap: https://training-hub.com.ua/sitemap-pt-page-2020-10.xml
+sitemap: https://training-hub.com.ua/sitemap-archives.xml

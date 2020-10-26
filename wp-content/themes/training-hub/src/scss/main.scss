@@ -54,6 +54,8 @@ header{
         transition: opacity 0.3s;
         transition-delay: 0s;
         background-color: #F4902F;
+        z-index: 2;
+
         li{
           margin-left: 0!important;
           transition: 0.3s;
@@ -1072,7 +1074,8 @@ header{
         justify-content: space-between;
       }
       img{
-        width: calc(33.3% - 10px);
+        width: calc(33.3% - 10px);00 max(,000)
+        height: auto;
       }
       strong{
         font-weight: bold;
