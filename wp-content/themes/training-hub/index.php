@@ -120,8 +120,10 @@ get_header();
                     while ($my_query->have_posts()) {
                         $counter++;
                         $my_query->the_post();
+                        $count_posts = wp_count_posts('trenings'); //указываем созданный вами тип записи - services
+                        $published_posts = $count_posts->publish; //количество только опубликованных записей
                         $alt = $image['alt'] ?>
-                        <li class="acardeon__item <?php if ( $counter == 1 ) echo 'active';?>" style="background-color: <?php the_field('czvet_bloka_akardeona')?>;">
+                        <li class="acardeon__item <?php if ( $counter == 1 ): echo 'active'; endif?>" style="background-color: <?php the_field('czvet_bloka_akardeona')?>; <?php if ( $published_posts == 1 ): echo 'flex: 1;'; endif?>">
                             <div class="acardeon__title-closed">
                                 <?php the_title(); ?>
                             </div>
