@@ -33,11 +33,34 @@ header{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  .primary-menu{
+    background-color: #545454;
+    &__wrapper{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .language-switch{
+        display: flex;
+        align-items: center;
+        a{
+          margin-left: 10px;
+          color: white;
+          font-family: Roboto,sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          text-decoration: none;
+        }
+      }
+    }
+  }
   .main-nav{
     background-color: #545454;
     &__list{
       display: flex;
       justify-content: center;
+      padding-left: 0;
     }
 
     &__item, .menu-item{
@@ -129,7 +152,7 @@ header{
     &__contacts{
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-end;
       flex-direction: column;
       a{
         font-family: 'Poppins', sans-serif;
@@ -334,6 +357,9 @@ header{
           bottom: 35px;
           left: 0;
           width: 30vw;
+          span{
+            text-transform: capitalize;
+          }
         }
       }
     &:before{

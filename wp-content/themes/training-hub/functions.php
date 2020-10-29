@@ -7,6 +7,127 @@
  * @package Training-Hub
  */
 
+add_action('customize_register', function($customizer) {
+
+    $customizer->add_section(
+
+        'section_one', array(
+
+            'title' => 'Контактные данные',
+
+            'description' => '',
+
+            'priority' => 11,
+
+        )
+
+    );
+
+    $customizer->add_setting('phone',
+
+        array('default' => '+38 (000) 123-45-67')
+
+    );
+
+    $customizer->add_control('phone', array(
+
+            'label' => 'Телефон 1',
+
+            'section' => 'section_one',
+
+            'type' => 'text',
+
+        )
+
+    );
+    $customizer->add_setting('phone_2',
+
+        array('default' => '+38 (000) 123-45-67')
+
+    );
+
+    $customizer->add_control('phone_2', array(
+
+            'label' => 'Телефон 2',
+
+            'section' => 'section_one',
+
+            'type' => 'text',
+
+        )
+
+    );
+    $customizer->add_setting('e-mail',
+
+        array('default' => 'petro@ukr.net')
+
+    );
+
+    $customizer->add_control('e-mail', array(
+
+            'label' => 'e-mail',
+
+            'section' => 'section_one',
+
+            'type' => 'email',
+
+        )
+
+    );
+    $customizer->add_setting('facebook',
+
+        array('default' => 'url')
+
+    );
+
+    $customizer->add_control('facebook', array(
+
+            'label' => 'facebook',
+
+            'section' => 'section_one',
+
+            'type' => 'url',
+
+        )
+
+    );
+    $customizer->add_setting('instagram',
+
+        array('default' => 'url')
+
+    );
+
+    $customizer->add_control('instagram', array(
+
+            'label' => 'instagram',
+
+            'section' => 'section_one',
+
+            'type' => 'url',
+
+        )
+
+    );
+    $customizer->add_setting('youtube',
+
+        array('default' => 'url')
+
+    );
+
+    $customizer->add_control('youtube', array(
+
+            'label' => 'youtube',
+
+            'section' => 'section_one',
+
+            'type' => 'url',
+
+        )
+
+    );
+
+});
+
 function webp_upload_mimes( $existing_mimes ) {
     // add webp to the list of mime types
     $existing_mimes['webp'] = 'image/webp';

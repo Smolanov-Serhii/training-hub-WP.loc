@@ -343,7 +343,6 @@ get_header();
                 </svg>
             </div>
         </a>
-
     </section>
     <section class="events-galery container">
         <div class="events-galery__title">
