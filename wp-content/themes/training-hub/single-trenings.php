@@ -49,6 +49,31 @@ get_header();
                 </div>
             </div>
         </div>
+        <?php
+        $post_id = get_the_ID();
+        $oblozhka_dlya_video = get_post_meta($post_id, $key = 'oblozhka_dlya_video', true);
+        if ( !empty ($oblozhka_dlya_video)) {?>
+            <section class="main-video container">
+            <a href="<?php echo (get_post_meta($post->ID, 'ssylka_na_video', true)); ?>" class="fresco main-video__fresco">
+                <img class="main-video__cover" src="<?php the_field('oblozhka_dlya_video', $postID); ?>" alt="">
+                <div class="main-video__play-btn">
+                    <svg width="166" height="166" viewBox="0 0 166 166" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0)">
+                            <path d="M88.2968 165.684C84.5989 165.684 80.9912 165.684 77.2933 165.684C75.3091 165.413 73.3249 165.233 71.4308 164.962C55.106 162.617 40.585 156.033 28.2286 145.12C13.2567 131.861 4.05706 115.266 0.90032 95.4237C0.53955 93.0787 0.268973 90.7337 -0.0917969 88.3887C-0.0917969 84.6908 -0.0917969 81.0831 -0.0917969 77.3852C0.178781 75.401 0.359166 73.4167 0.629743 71.5227C4.05706 49.6059 14.2488 31.6576 31.5658 17.9483C49.965 3.42735 70.9799 -2.25477 94.1593 0.811772C116.076 3.78812 134.024 14.1603 147.734 31.4772C162.345 49.8765 167.937 70.8913 164.96 94.161C162.796 110.576 156.122 125.007 145.208 137.363C131.95 152.425 115.355 161.535 95.422 164.692C92.9868 165.052 90.6418 165.323 88.2968 165.684ZM144.036 82.8869C144.036 49.2451 116.527 21.6462 82.8853 21.6462C49.2435 21.6462 21.7348 49.0648 21.6446 82.7066C21.5544 116.348 49.0631 143.947 82.7049 144.037C116.347 144.128 143.946 116.529 144.036 82.8869Z" fill="white"/>
+                            <path d="M120.317 82.887C101.016 96.1453 82.0753 109.223 62.8643 122.391C62.8643 95.9649 62.8643 69.8091 62.8643 43.2925C81.9851 56.4606 101.016 69.6287 120.317 82.887Z" fill="white"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0">
+                                <rect width="165.684" height="165.684" fill="white"/>
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+            </a>
+        </section>
+            <?php
+        }
+        ?>
         <div class="traning-days">
             <div class="container">
                 <div class="traning-days__title">
@@ -182,7 +207,9 @@ get_header();
         </div>
         <div class="get-contact-form container">
             <div class="get-contact-form__button">
-                СТАТЬ УЧАСТНИКОМ ШКОЛЫ
+                <?php
+                echo the_field('tekst_na_knopke_dlya_zapisi');
+                ?>
             </div>
         </div>
     </main><!-- #main -->

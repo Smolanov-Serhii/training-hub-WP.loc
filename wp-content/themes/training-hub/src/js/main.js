@@ -144,12 +144,13 @@
                             ctx.font = '50px Roboto, sans-serif';
                             ctx.fillText(Math.ceil(al) + '+', cw*0.5, ch*0.5+11, cw);
                             ctx.beginPath();
-                            ctx.arc(135, 135, 120, start, diff/10+start, false);
+                            ctx.arc(120, 120, 116, start, diff/10+start, false);
                             ctx.stroke();
                             al = al + datavaluepart; // increment amount loadet +1 every 50sec
                             if(al > datavalue) {
                                 clearTimeout(sim);
                                 // Pregress copmlete
+
                             }
                         }
                         var sim = setInterval(progressSim, 40);
@@ -228,28 +229,6 @@
                     }
                 ]
             });
-            // $('.traning-days__slide').slick({
-            //     slidesToShow: 3,
-            //     slidesToScroll: 1,
-            //     arrows: false,
-            //     centerMode: true,
-            //     fade: true,
-            //     // asNavFor: '.traning-days__list'
-            // });
-            // $('.traning-days__list').slick({
-            //     slidesToShow: 5,
-            //     slidesToScroll: 1,
-            //     asNavFor: '.traning-days__slide',
-            //     dots: false,
-            //     centerMode: false,
-            // });
-            // $('.traning-days__list .slick-slide').on('click', function(){
-            //     $('.traning-days__list .slick-slide').removeClass('slick-current');
-            //     $(this).addClass('slick-current');
-            //     var sliderIndex = $(this).index();
-            //     console.log(sliderIndex);
-            //     $('.traning-days__slide').slick('slickGoTo', sliderIndex);
-            // });
         }
         if ($('.sertificate-people__list').length){
             $('.sertificate-people__list').slick({

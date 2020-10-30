@@ -102,6 +102,9 @@ header{
         line-height: 19px;
         color: white;
         text-decoration: none;
+        font{
+          text-transform: capitalize;
+        }
       }
       &:first-child{
         margin-left: -20px;
@@ -630,12 +633,23 @@ header{
   }
   &__item{
     position: relative;
+    .center-circle{
+      position: absolute;
+      top: 8px;
+      left: 40px;
+      width: calc(100% - 80px);
+      height: calc(100% - 20px);
+      box-sizing: border-box;
+      border-radius: 50%;
+    }
   }
   .round-counter{
     text-align: center;
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: bold;
+    border-radius: 50%;
+    position: relative;
   }
   &__item-text{
     position: absolute;
@@ -1844,7 +1858,7 @@ background-color: #F9F9FF;
     font-weight: 700;
     font-size: 60px;
     color: transparent;
-    -webkit-text-stroke: 2px #f4902f;
+    -webkit-text-stroke: 2px #23c4d2;
     margin-bottom: 50px;
     margin-top: 50px;
   }
