@@ -1228,6 +1228,10 @@ header{
         &.slick-current{
           .icons_container{
             .icon_item{
+              svg{
+
+                min-height: 69px;
+              }
               &:nth-child(1){
                 transition-delay: 0.3s;
               }
