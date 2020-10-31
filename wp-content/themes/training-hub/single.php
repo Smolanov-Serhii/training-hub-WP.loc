@@ -9,32 +9,41 @@
 
 get_header();
 ?>
+    <div class="breadcrumb-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <?php if ( function_exists( 'dimox_breadcrumbs' ) ) dimox_breadcrumbs(); ?>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="blog-content-area section-padding-0-100">
+        <div class="container">
+            <div class="row justify-content-center">
 
-	<main id="primary" class="site-main">
+            <!-- Blog Posts Area -->
+                <div class="col-12">
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
-
-			get_template_part( 'template-parts/content', get_post_type() );
-
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'training-hub' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'training-hub' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
-
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
-
-		endwhile; // End of the loop.
-		?>
-
-	</main><!-- #main -->
-
+                <!-- Post Details Area -->
+                    <div class="single-post-details-area">
+                        <div class="post-content">
+                            <div class="text-center mb-50">
+                                <date class="post-date"><?php the_date();?> / TRAINING-HUB</date>
+                                <h1 class="post-title"><?php the_title();?></h1>
+                            </div>
+                            <div class="post-thumbnail mb-50">
+                                <?php echo get_the_post_thumbnail();?>
+                            </div>
+                            <?php the_content();?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();

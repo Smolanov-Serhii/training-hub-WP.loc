@@ -38,17 +38,18 @@ get_header();
                 <div class="col-12 col-lg-12">
                     <div class="blog-posts-area">
                         <div class="row">
+                            <div class="col-12">
+                                <div class="section-heading custom-header">
+                                    <?php the_title( '<h1 class="page-title">', '</h1>' ); ?>
+                                    <p><?php the_content(); ?></p>
+                                </div>
+                            </div>
                             <?php
                             if ( have_posts() ) : // если имеются записи в блоге.
                                 query_posts('cat=4');   // указываем ID рубрик, которые необходимо вывести.
-                                ?>
-                                <div class="col-12">
-                                    <div class="section-heading custom-header">
-                                        <?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
-                                        <p>Записи из: <?php single_cat_title(); ?></p>
-                                    </div>
-                                </div>
-                                <?php
+                            ?>
+
+                            <?php
                                 while (have_posts()) : the_post();  // запускаем цикл обхода материалов блога
                                     ?>
                                     <div class="col-12 col-sm-6">
@@ -67,7 +68,7 @@ get_header();
                                             </div>
                                         </div>
                                     </div>
-                                <?php
+                                    <?php
                                 endwhile;  // завершаем цикл.
                             endif;
                             /* Сбрасываем настройки цикла. Если ниже по коду будет идти еще один цикл, чтобы не было сбоя. */
