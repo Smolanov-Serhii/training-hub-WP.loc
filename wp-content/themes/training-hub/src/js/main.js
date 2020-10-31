@@ -1,4 +1,21 @@
     jQuery(document).ready(function($) {
+
+        $(document).on('click', '.primary-menu__burger', function () {
+
+                $('.primary-menu__wrapper').css("display", "flex")
+                    .hide()
+                    .fadeIn();
+                $('.primary-menu__fade').fadeToggle(300);
+                $('body').toggleClass('locked');
+        });
+        $(document).on('click', '.menu-header__close', function () {
+
+            $('.primary-menu__wrapper').css("display", "none")
+            $('.primary-menu__fade').fadeToggle(300);
+            $('body').toggleClass('locked');
+        });
+
+
         if ($('.recall__item').length){
             $('.recall__item').click(function () {
                 $(this).clone(true)               // сделаем копию элемента hello
@@ -83,6 +100,32 @@
                 swipe: true,
                 autoplay: true,
                 autoplaySpeed: 4000,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 2
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    }
+                ]
             });
         }
 
@@ -101,6 +144,32 @@
                 swipe: true,
                 autoplay: true,
                 autoplaySpeed: 4000,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            centerMode: true,
+                            centerPadding: '40px',
+                            slidesToShow: 1
+                        }
+                    }
+                ]
             });
         }
 
@@ -187,7 +256,7 @@
                 draggable: false,
                 fade: false,
                 touchMove: false,
-                swipe: false,
+                swipe: false
             });
             $('.events__select-list .slick-slide').on('click', function(){
                 $('.events__select-list .slick-slide').removeClass('slick-current');

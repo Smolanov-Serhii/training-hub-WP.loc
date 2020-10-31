@@ -41,6 +41,9 @@ get_header();
                     ?>
 
                     <li class="header-slider__item" style="background-image: url('<?php echo $thumb_url[0];?>')">
+                        <div class="header-slider__image" style="background-image: url('<?php echo $thumb_url[0];?>')">
+
+                        </div>
                         <div class="header-slider__title container">
                             <?php the_title();?>
                         </div>

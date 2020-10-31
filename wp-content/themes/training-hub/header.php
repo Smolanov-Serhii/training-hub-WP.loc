@@ -14,7 +14,7 @@
 <html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -44,7 +44,6 @@
 </section>
 
 <?php wp_body_open(); ?>
-<div id="page" class="site">
     <header>
         <div class="contact-section container">
             <div class="contact-section__logo">
@@ -62,7 +61,19 @@
             </div>
         </div>
         <div class="primary-menu">
+            <div class="primary-menu__burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="primary-menu__fade" style="display: none"></div>
             <div class="primary-menu__wrapper container">
+                <div class="primary-menu__logo-mobile">
+                    <?php
+                    the_custom_logo();
+                    ?>
+                    <svg class="menu-header__close" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M20.24 7.93018L14.9362 13.2327L9.63371 7.93018L7.86621 9.69768L13.1687 15.0002L7.86621 20.3027L9.63371 22.0702L14.9362 16.7677L20.24 22.0702L22.0075 20.3027L16.705 15.0002L22.0075 9.69768L20.24 7.93018Z" fill="#000000"></path> </svg>
+                </div>
                 <?php
                 wp_nav_menu(
                     array(
