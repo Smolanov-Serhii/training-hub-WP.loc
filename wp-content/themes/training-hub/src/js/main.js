@@ -1,5 +1,36 @@
-    jQuery(document).ready(function($) {
+$( document ).ready(function() {
+    if ($('.recall').length){
+        $('.recall__item').each(function() {
+            $(this).click(function () {
+                $(this).clone(true).appendTo('.modal-recall__content');
+                $('.modal-recall').fadeIn(300);
+            });
+        });
 
+        $('.modal-recall__close').click(function () {
+            $('.modal-recall').fadeOut(300);
+            setTimeout(function () {
+                $('.modal-recall__wrapper .recall__item').remove();
+            }, 300)
+        });
+    }
+});
+jQuery(document).ready(function($) {
+
+        jQuery(function($){
+            $(document).mouseup(function (e){ // событие клика по веб-документу
+                var div = $("#popup"); // тут указываем ID элемента
+                if (!div.is(e.target) // если клик был не по нашему блоку
+                    && div.has(e.target).length === 0) { // и не по его дочерним элементам
+                    if ($('.modal-recall__wrapper .recall__item').length){
+                        $('.modal-recall').fadeOut(300);
+                        setTimeout(function () {
+                            $('.modal-recall__wrapper .recall__item').remove();
+                        }, 300)
+                    }
+                }
+            });
+        });
         $(document).on('click', '.primary-menu__burger', function () {
 
                 $('.primary-menu__wrapper').css("display", "flex")
@@ -15,36 +46,6 @@
             $('body').toggleClass('locked');
         });
 
-
-        if ($('.recall__item').length){
-            $('.recall__item').click(function () {
-                $(this).clone(true)               // сделаем копию элемента hello
-                    .appendTo(".modal-recall__content");
-                $('.modal-recall').fadeIn(300);
-            });
-            $('.modal-recall__close').click(function () {
-                $('.modal-recall').fadeOut(300);
-                setTimeout(function () {
-                    $('.modal-recall__wrapper .recall__item').remove();
-                }, 300)
-            });
-
-            jQuery(function($){
-                $(document).mouseup(function (e){ // событие клика по веб-документу
-                    var div = $("#popup"); // тут указываем ID элемента
-                    if (!div.is(e.target) // если клик был не по нашему блоку
-                        && div.has(e.target).length === 0) { // и не по его дочерним элементам
-                        if ($('.modal-recall__wrapper .recall__item').length){
-                            $('.modal-recall').fadeOut(300);
-                            setTimeout(function () {
-                                $('.modal-recall__wrapper .recall__item').remove();
-                            }, 300)
-                        }
-                    }
-                });
-            });
-
-        }
         if ($('.acardeon__item').length){
             $('.acardeon__item').click(function () {
                 $('.acardeon__item').removeClass('active');

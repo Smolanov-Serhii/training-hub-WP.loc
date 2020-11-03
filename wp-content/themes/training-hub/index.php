@@ -187,17 +187,17 @@ get_header();
     <section class="counter container">
         <div class="counter__item">
             <canvas class="round-counter my-canv" width="240" height="240" data-value="3000" data-color="F4902F"></canvas>
-            <div class="center-circle" style="border: 3px solid white;"></div>
+            <div class="center-circle" style="border: 10px solid white;"></div>
             <span class="counter__item-text" style="color: #F4902F">часов обучения</span>
         </div>
         <div class="counter__item">
             <canvas class="round-counter my-canv" width="240" height="240" data-value="7" data-color="468388"></canvas>
-            <div class="center-circle" style="border: 3px solid white;"></div>
+            <div class="center-circle" style="border: 10px solid white;"></div>
             <span class="counter__item-text" style="color: #468388">лет в сфере обучения</span>
         </div>
         <div class="counter__item">
             <canvas class="round-counter my-canv" width="240" height="240" data-value="4000" data-color="000000"></canvas>
-            <div class="center-circle" style="border: 3px solid white;"></div>
+            <div class="center-circle" style="border: 10px solid white;"></div>
             <span class="counter__item-text" style="color: #000000">участников обучения</span>
         </div>
     </section>
