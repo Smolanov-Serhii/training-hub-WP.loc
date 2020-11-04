@@ -84,12 +84,14 @@
     }
   }
   .counter{
-    justify-content: space-between!important;
+    justify-content: center!important;
+    flex-wrap: wrap;
     &__item{
-      width: calc(33.3% - 10px);
+      width: calc(50% - 20px);
       display: flex;
       align-items: center;
       justify-content: center;
+      margin: 0 10px 30px 10px;
       .my-canv{
         margin: 0;
       }
@@ -125,13 +127,7 @@
     }
 
   }
-  .counter{
-    flex-wrap: wrap;
-    justify-content: center;
-    &__item{
-      margin-bottom: 50px;
-    }
-  }
+
   .container-grey{
     .fullcycle{
       &__title{
@@ -365,7 +361,6 @@
     }
   }
   .start-date{
-    pointer-events: none;
     &__date{
       font-size: 340px;
     }
@@ -416,7 +411,7 @@
     .fullcycle{
       display: flex;
       flex-wrap: wrap;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
       padding-bottom: 50px;
       &__title{
         font-size: 50px;
@@ -550,6 +545,47 @@
     &__copyright-content{
       text-align: center;
       font-size: 20px;
+    }
+  }
+}
+@media all and (max-width: 470px){
+  .start-date{
+    &__digit{
+      transform: scale(0.8);
+      #uji-wrapper{
+
+      }
+    }
+  }
+}
+@media all and (max-width: 380px){
+  .start-date{
+    &__description{
+      pointer-events: all!important;
+    }
+    &__desc-subtitle{
+      font-size: 66px;
+    }
+    &__digit{
+      margin-left: -30px;
+      #uji-wrapper{
+        left: -20px;
+        width: 100vw!important;
+        #ujiCountdown1{
+          .ujiCountdown{
+            display: flex;
+            justify-content: space-between!important;
+          }
+          .ujiCountdown-section{
+            .countdown_amount{
+              padding: 5px 3px!important;
+            }
+          }
+          .countdown_amount{
+            font-size: 20px!important;
+          }
+        }
+      }
     }
   }
 }
