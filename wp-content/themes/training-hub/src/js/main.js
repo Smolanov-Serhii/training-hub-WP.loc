@@ -267,7 +267,7 @@ jQuery(document).ready(function($) {
                 $('.events__slide').slick('slickGoTo', sliderIndex);
             });
         }
-        $(window).resize(function(e){
+
             if(window.innerWidth > 768) {
                 if ($('.traning-days').length){
                     $('.traning-days__slide').slick({
@@ -283,7 +283,7 @@ jQuery(document).ready(function($) {
                     });
                 }
             }
-        });
+
         if ($('.sertificate-people__list').length){
             $('.sertificate-people__list').slick({
                 centerMode: false,
