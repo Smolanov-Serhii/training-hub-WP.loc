@@ -162,6 +162,8 @@ get_header();
                 $post_id = get_the_ID();
                 $zagolovok_pervogo_sertifikata = get_post_meta($post_id, $key = 'zagolovok_pervogo_sertifikata', true);
                 $zagolovok_vtorogo_sertifikata = get_post_meta($post_id, $key = 'zagolovok_vtorogo_sertifikata', true);
+                $kartinka_pervogo_sertifikata = get_post_meta($post_id, $key = 'kartinka_pervogo_sertifikata', true);
+                $kartinka_vtorogo_sertifikata = get_post_meta($post_id, $key = 'kartinka_vtorogo_sertifikata', true);
                 if ( !empty ($zagolovok_pervogo_sertifikata)) {
                     echo "<li class='sertificate-people__item'>
                     <div class='sertificate-people__item-cont'>
@@ -171,13 +173,14 @@ get_header();
                         <div class='sertificate-people__desc'>";
                             the_field('dobavit_opisanie_pervogo_sertifikata');
                         echo "</div>
-                    </div>
-                    <div class='sertificate-people__img'>
+                    </div>";
+                    if ( !empty ($kartinka_pervogo_sertifikata)) {
+                     echo "<div class='sertificate-people__img'>
                         <img src='";
                         the_field('kartinka_pervogo_sertifikata');
-                        echo "' alt='"; the_field('zagolovok_pervogo_sertifikata');
-                    echo "'></div>
-                </li>";
+                        echo "' alt='"; the_field('dobavit_opisanie_pervogo_sertifikata'); echo "'></div>";
+                    };
+                    echo "</li>";
                 }
                 if ( !empty ($zagolovok_vtorogo_sertifikata)) {
                     echo "<li class='sertificate-people__item'>
@@ -188,13 +191,14 @@ get_header();
                         <div class='sertificate-people__desc'>";
                     the_field('opisanie_pervogo_sertifikata');
                     echo "</div>
-                    </div>
-                    <div class='sertificate-people__img'>
+                    </div>";
+                    if ( !empty ($kartinka_vtorogo_sertifikata)) {
+                     echo "<div class='sertificate-people__img'>
                         <img src='";
                         the_field('kartinka_vtorogo_sertifikata');
-                        echo "' alt='"; the_field('zagolovok_vtorogo_sertifikata');
-                    echo "'></div>
-                </li>";
+                        echo "' alt='"; the_field('opisanie_pervogo_sertifikata'); echo "'></div>";
+                    };
+                    echo "</li>";
                 }
                 ?>
             </ul>

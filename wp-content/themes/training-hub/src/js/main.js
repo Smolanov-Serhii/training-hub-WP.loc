@@ -1,6 +1,6 @@
 $( document ).ready(function() {
     if ($('.recall').length){
-        $('.recall__item').each(function() {
+        $('.recall .recall__item').each(function() {
             $(this).click(function () {
                 $(this).clone(true).appendTo('.modal-recall__content');
                 $('.modal-recall').fadeIn(300);
@@ -267,39 +267,23 @@ jQuery(document).ready(function($) {
                 $('.events__slide').slick('slickGoTo', sliderIndex);
             });
         }
-        if ($('.traning-days').length){
-            $('.traning-days__slide').slick({
-                centerMode: true,
-                centerPadding: '60px',
-                slidesToShow: 3,
-                arrows: true,
-                infinite: false,
-                variableWidth: true,
-                dots: false,
-                prevArrow: $('.traning-days__nav-prew'),
-                nextArrow: $('.traning-days__nav-next'),
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            arrows: false,
-                            centerMode: true,
-                            centerPadding: '40px',
-                            slidesToShow: 3
-                        }
-                    },
-                    {
-                        breakpoint: 480,
-                        settings: {
-                            arrows: false,
-                            centerMode: true,
-                            centerPadding: '40px',
-                            slidesToShow: 1
-                        }
-                    }
-                ]
-            });
-        }
+        $(window).resize(function(e){
+            if(window.innerWidth > 768) {
+                if ($('.traning-days').length){
+                    $('.traning-days__slide').slick({
+                        centerMode: true,
+                        centerPadding: '60px',
+                        slidesToShow: 3,
+                        arrows: true,
+                        infinite: false,
+                        variableWidth: true,
+                        dots: false,
+                        prevArrow: $('.traning-days__nav-prew'),
+                        nextArrow: $('.traning-days__nav-next')
+                    });
+                }
+            }
+        });
         if ($('.sertificate-people__list').length){
             $('.sertificate-people__list').slick({
                 centerMode: false,

@@ -1,4 +1,10 @@
 @media all and (max-width: 1300px){
+  .single-trainin{
+    &__having-fade{
+      right: 30px;
+      font-size: 20px;
+    }
+  }
   .modal-recall{
     &__wrapper{
       width: auto;
@@ -28,6 +34,14 @@
   }
 }
 @media all and (max-width: 1250px){
+  .single-trainin{
+    .time-price{
+      &__price{
+        font-size: 120px;
+      }
+    }
+  }
+
   .header-slider{
     &__item{
       background-position: right bottom;
@@ -62,6 +76,15 @@
   }
 }
 @media all and (max-width: 1024px){
+  .single-trainin{
+    &__having-fade{
+      right: 30px;
+      top: 30px;
+      bottom: 30px;
+      font-size: 15px;
+      line-height: 30px;
+    }
+  }
   .events{
     &__container{
       display: flex;
@@ -265,6 +288,157 @@
   }
 }
 @media all and (max-width: 768px){
+
+  .single-trainin{
+    .get-contact-form{
+      &__button{
+        font-size: 18px;
+        line-height: 1.5;
+      }
+    }
+    .time-price{
+      &__container{
+        display: flex;
+        flex-wrap: wrap;
+      }
+      &__item{
+        width: 100%;
+        margin-bottom: 30px;
+      }
+      &__title{
+        font-size: 40px;
+      }
+      &__price{
+        font-size: 70px;
+        line-height: 1.2;
+      }
+      &__desc{
+        font-size: 20px;
+        line-height: 120%;
+        margin-top: 0;
+      }
+    }
+    &__title{
+      font-size: 34px!important;
+      text-transform: uppercase;
+    }
+    .traning-days{
+      .slick-slide{
+        width: auto;
+      }
+      &__nav{
+        display: none;
+      }
+      &__title{
+        font-size: 40px;
+      }
+      &__item{
+        padding: 0;
+        background-color: transparent;
+        h3{
+          font-size: 30px;
+        }
+        p, li{
+          font-size: 13px!important;
+          line-height: 20px!important;
+        }
+        ul li{
+          padding-left: 24px;
+        }
+      }
+    }
+    .for-who{
+      &__content{
+        p, li{
+          font-size: 15px;
+          line-height: 20px;
+        }
+        li{
+          margin-bottom: 10px;
+        }
+      }
+    }
+    &__title, .for-who__title{
+      font-size: 50px;
+      margin-top: 30px;
+    }
+    &__having-fade{
+      position: static;
+      width: 100%;
+      height: auto;
+      padding: 30px;
+    }
+    &__date{
+      font-size: 38px;
+      margin-bottom: 30px;
+    }
+    &__content{
+      h3{
+        font-size: 34px;
+        margin-top: 30px;
+        padding-top: 0;
+      }
+      .wp-block-group{
+        &__inner-container{
+          p, li{
+            font-size: 15px;
+            line-height: 20px;
+          }
+          li{
+            margin-bottom: 10px;
+          }
+        }
+      }
+      p, li{
+        font-size: 15px;
+        line-height: 20px;
+      }
+      .image-container{
+        display: flex;
+        flex-wrap: wrap;
+        img{
+          width: 100%;
+          height: auto;
+          margin-bottom: 15px;
+        }
+      }
+    }
+    .sertificate-people{
+      margin-bottom: 50px;
+      &__item-cont{
+
+      }
+      &__title{
+        font-size: 40px;
+        padding-right: 0;
+        text-align: center;
+      }
+      &__desc{
+        text-align: center;
+        font-size: 20px;
+        line-height: 1.2;
+        padding: 0;
+        margin-top: 30px;
+        background-color: transparent;
+        font-weight: bolder;
+      }
+      &__item-cont{
+        margin-bottom: 30px;
+      }
+      &__img{
+        position: static;
+        right: 0;
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        margin: auto;
+        img{
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+  }
   #trenners{
     .entry-title{
       margin-bottom: 0;
