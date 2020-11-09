@@ -77,7 +77,7 @@ get_header();
                 $post_id = get_the_ID();
                 $data = get_post_meta($post_id, $key = 'data_provedeniya_intensiva', true);
                 ?>
-                <div class="start-date__digit">
+                <div class="start-date__digit wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
                     <div class="start-date__date">
                         <?php the_field('data_nachala_intensiva') ?>
                     </div>
@@ -86,7 +86,7 @@ get_header();
 
                     </div>
                 </div>
-                <div class="start-date__description">
+                <div class="start-date__description wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.7s">
                     <div class="start-date__desc-title">
                         <?php the_field('zagolovok_nachalo_intensiva') ?>
                     </div>
@@ -107,7 +107,7 @@ get_header();
         }
         wp_reset_query(); ?>
     </section>
-    <section class="acardeon">
+    <section class="acardeon wow fadeInUp" data-wow-duration="0.3" data-wow-offset="50" data-wow-delay="0.3s">
         <ul class="acardeon__list">
                 <?php
                 $counter = 0;
@@ -146,7 +146,7 @@ get_header();
                 wp_reset_query(); ?>
         </ul>
     </section>
-    <div class="container-grey">
+    <div class="container-grey wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
         <section class="fullcycle container">
             <?php
             $counter = 0;
@@ -201,7 +201,7 @@ get_header();
             <span class="counter__item-text" style="color: #000000">участников обучения</span>
         </div>
     </section>
-    <section class="events">
+    <section class="events wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="events__container">
             <div class="events__select">
                 <ul class="events__select-list">
@@ -472,7 +472,7 @@ get_header();
         </div>
 
     </section>
-    <section class="text-only container">
+    <section class="text-only container wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
 
         <?php
         $content = get_the_content('читать далее');
@@ -484,7 +484,7 @@ get_header();
 $post_id = get_the_ID();
 $oblozhka_dlya_video = get_post_meta($post_id, $key = 'vyberite_oblozhku_video', true);
 if ( !empty ($oblozhka_dlya_video)) {?>
-    <section class="main-video container">
+    <section class="main-video container wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
         <a href="<?php echo (get_post_meta($post->ID, 'ssylka_na_video_s_yutuba', true)); ?>" class="fresco main-video__fresco">
             <img class="main-video__cover" src="<?php the_field('vyberite_oblozhku_video', $postID); ?>" alt="">
             <div class="main-video__play-btn">
@@ -500,7 +500,7 @@ if ( !empty ($oblozhka_dlya_video)) {?>
 }
 ?>
 
-    <section class="events-galery container">
+    <section class="events-galery container wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
         <div class="events-galery__title">
             <?php echo get_cat_name(3);?>
         </div>
@@ -540,7 +540,7 @@ if ( !empty ($oblozhka_dlya_video)) {?>
             </div>
         </div>
     </section>
-    <section class="recall">
+    <section class="recall wow fadeInUp" data-wow-duration="0.3" data-wow-offset="50" data-wow-delay="0.3s">
         <div class="container">
             <div class="recall__title">
                 ОТЗЫВЫ  О НАШЕЙ РАБОТЕ
